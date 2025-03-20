@@ -1,12 +1,5 @@
 import numpy as np
 
-# ADAMBS
-def batch_selection_adambs(w_t, batch_size, gamma):
-    n = len(w_t)
-    weights_sum = np.sum(w_t)
-    p_t = (1.0-gamma) * w_t / weights_sum + gamma / n
-    indices = np.random.choice(n, size=batch_size, replace=True, p=p_t)
-    return indices, p_t
 
 # ADAMCB
 def distr_multiPlays(weights, K, gamma=0.0):
