@@ -1,16 +1,5 @@
 import numpy as np
 
-def update_sample_weights_BS(indices, w_t, p_t, sample_gradient_norms, gamma, alpha_p):
-    n = len(p_t)
-    K = len(indices)
-    p_min = gamma / n
-    h_hat = np.zeros(n)
-    for i, idx in enumerate(indices):
-        loss = - (sample_gradient_norms[i]**2 / p_t[idx]**2) + 1.0 / p_min**2
-        h_hat[idx] += loss / (K*p_t[idx])
-    w_t = w_t * np.exp(-alpha_p * h_hat)
-    return w_t
-
 
 def update_sample_weights_CB(indices, w_t, p_t, sample_gradient_norms, gamma, alpha_p, S_null):
     n = len(p_t)
